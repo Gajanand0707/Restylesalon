@@ -70,16 +70,7 @@ PLASMIC.registerComponent(Button, {
       defaultValue: 500,
     },
 
-    icon: {
-      type: "string",
-      description: "Emoji, text, or icon name",
-    },
-
-    iconPosition: {
-      type: "choice",
-      options: ["left", "right"],
-      defaultValue: "right",
-    },
+   
   },
 });
 
