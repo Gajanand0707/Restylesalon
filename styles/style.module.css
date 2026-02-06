@@ -99,7 +99,7 @@
   z-index: 2;
 }
 
-.icon {
+.icon_1 {
   background: #8b1d2c;
   color: white;
   width: 36px;
@@ -109,6 +109,8 @@
   place-items: center;
   font-size: 18px;
   flex-shrink: 0;
+  margin-top: -40px;
+  position: absolute;
 }
 
 .title {
@@ -159,4 +161,23 @@
 .card_main {
   padding: 0 10px;
   box-sizing: border-box;
+}
+
+
+/* Form */
+
+
+.subscribe_form_inputs{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap:20px;
+}
+
+.subscribe_form_inputs input , .input{
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+}
+.subscribe_form_email{
+margin: 20px 0;
 }

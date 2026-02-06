@@ -1,7 +1,8 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs/react-server-conditional";
 import Button from "./components/ui/Button";
 import FAQ from "./components/ui/Faq";
-import FacialCard from "./components/ui/FacialCard";
+import FacialSlider from "./components/ui/SliderFacial";
+import SubscribeForm from "./components/SubscribeForm";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -74,33 +75,82 @@ PLASMIC.registerComponent(Button, {
    
   },
 });
-
-PLASMIC.registerComponent(FacialCard, {
-  name: "FacialCard",
-
+PLASMIC.registerComponent(SubscribeForm, {
+  name: "SubscribeForm",
   props: {
-    imageSrc: {
-      type: "imageUrl",
-      displayName: "Image",
-    },
+    // Labels
+    labelColor: { type: "color", defaultValue: "#ffffff" },
+    labelFontSize: { type: "number", defaultValue: 14 },
+    labelMarginBottom: { type: "number", defaultValue: 8 },
 
-    title: {
-      type: "string",
-      defaultValue: "Facials",
-    },
+    // Inputs
+    inputHeight: { type: "number", defaultValue: 52 },
+    inputRadius: { type: "number", defaultValue: 999 },
+    inputBgColor: { type: "color", defaultValue: "#ffffff" },
+    inputTextColor: { type: "color", defaultValue: "#000000" },
+    inputFontSize: { type: "number", defaultValue: 16 },
+    inputPaddingX: { type: "number", defaultValue: 20 },
 
-    subtitle: {
-      type: "string",
-      defaultValue: "Facials",
+    // Button
+    buttonText: { type: "string", defaultValue: "Subscribe Now" },
+    buttonHeight: { type: "number", defaultValue: 54 },
+    buttonRadius: { type: "number", defaultValue: 999 },
+    buttonBgColor: { type: "color", defaultValue: "#8f1d2c" },
+    buttonTextColor: { type: "color", defaultValue: "#ffffff" },
+    buttonFontSize: { type: "number", defaultValue: 16 },
+    buttonPaddingX: { type: "number", defaultValue: 36 },
+
+    // Events
+    onSubmit: {
+      type: "eventHandler",
+      argTypes: [],
+    },
+  },
+});
+PLASMIC.registerComponent(FacialSlider, {
+  name: "FacialSlider",
+  props: {
+    cards: {
+      type: "array",
+      description: "Facial cards",
+      itemType: {
+        type: "object",
+        fields: {
+          imageSrc: {
+            type: "imageUrl",
+            description: "Card image",
+          },
+          title: {
+            type: "string",
+            defaultValue: "Glow Facial",
+          },
+          subtitle: {
+            type: "string",
+            defaultValue: "Facials",
+          },
+        },
+      },
+      defaultValue: [
+        {
+          imageSrc: "https://via.placeholder.com/400",
+          title: "Hydra Facial",
+          subtitle: "Facials",
+        },
+        {
+          imageSrc: "https://via.placeholder.com/400",
+          title: "Anti-Aging Facial",
+          subtitle: "Skin Care",
+        },
+      ],
     },
 
     onBookNow: {
       type: "eventHandler",
-      displayName: "On Book Now Click",
-      argTypes: [], // ✅ REQUIRED
+      argTypes: [],
     },
   },
 });
+
 PLASMIC.registerComponent(FAQ, {
   name: "FAQ",
   description: "FAQ accordion with full style controls",
