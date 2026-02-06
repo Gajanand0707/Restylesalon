@@ -1,6 +1,7 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs/react-server-conditional";
 import Button from "./components/ui/Button";
 import FAQ from "./components/ui/Faq";
+import FacialCard from "./components/ui/FacialCard";
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -74,8 +75,32 @@ PLASMIC.registerComponent(Button, {
   },
 });
 
+PLASMIC.registerComponent(FacialCard, {
+  name: "FacialCard",
 
+  props: {
+    imageSrc: {
+      type: "imageUrl",
+      displayName: "Image",
+    },
 
+    title: {
+      type: "string",
+      defaultValue: "Facials",
+    },
+
+    subtitle: {
+      type: "string",
+      defaultValue: "Facials",
+    },
+
+    onBookNow: {
+      type: "eventHandler",
+      displayName: "On Book Now Click",
+      argTypes: [], // ✅ REQUIRED
+    },
+  },
+});
 PLASMIC.registerComponent(FAQ, {
   name: "FAQ",
   description: "FAQ accordion with full style controls",
